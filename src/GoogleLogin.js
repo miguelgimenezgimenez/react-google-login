@@ -83,8 +83,8 @@ class GoogleLogin extends Component {
     */
     const basicProfile = res.getBasicProfile()
     const authResponse = res.getAuthResponse()
-    console.log(basicProfile)
-    console.log(authResponse)
+    res.basicProfile = basicProfile
+    res.lalalallala =basicProfile
     res.googleId = basicProfile.getId()
     res.tokenObj = authResponse
     res.tokenId = authResponse.id_token
