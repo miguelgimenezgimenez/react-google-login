@@ -30,7 +30,8 @@ class GoogleLogin extends Component {
           discoveryDocs,
           ux_mode: uxMode,
           redirect_uri: redirectUri,
-          scope
+          scope,
+          accessType:'offline'
         }
 
         if (responseType === 'code') {
@@ -68,6 +69,7 @@ class GoogleLogin extends Component {
         prompt
       }
       onRequest()
+      console.log('rererereer')
       if (responseType === 'code') {
         auth2.grantOfflineAccess(options).then(res => onSuccess(res), err => onFailure(err))
       } else {
@@ -81,6 +83,8 @@ class GoogleLogin extends Component {
     */
     const basicProfile = res.getBasicProfile()
     const authResponse = res.getAuthResponse()
+    console.log(basicProfile)
+    console.log(authResponse)
     res.googleId = basicProfile.getId()
     res.tokenObj = authResponse
     res.tokenId = authResponse.id_token
